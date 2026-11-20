@@ -1,0 +1,227 @@
+[
+  {
+    "evidence_id": "E0001",
+    "paper_id": "P0001",
+    "claim_id": "C0001",
+    "section": "3. Taxonomy",
+    "page": 4,
+    "quote": "We group memory mechanisms into retrieval, consolidation, and editing.",
+    "stance": "Background"
+  },
+  {
+    "evidence_id": "E0002",
+    "paper_id": "P0001",
+    "claim_id": "C0002",
+    "section": "4.1 Retrieval",
+    "page": 6,
+    "quote": "Retrieval-based agents consistently outperform no-memory baselines on long-horizon tasks.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0003",
+    "paper_id": "P0001",
+    "claim_id": "C0003",
+    "section": "4.2 Consolidation",
+    "page": 8,
+    "quote": "Consolidation reduces redundant retrieval in 41 of 60 surveyed systems.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0004",
+    "paper_id": "P0001",
+    "claim_id": "C0004",
+    "section": "6. Evaluation",
+    "page": 11,
+    "quote": "The field lacks standardized benchmarks for long-term memory.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0005",
+    "paper_id": "P0002",
+    "claim_id": "C0005",
+    "section": "5.1 Main results",
+    "page": 6,
+    "quote": "Vector retrieval outperforms full-context prompting when context exceeds 8k tokens.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0006",
+    "paper_id": "P0002",
+    "claim_id": "C0006",
+    "section": "5.3 Ablation",
+    "page": 8,
+    "quote": "With 30% noisy memory, retrieval gains disappear.",
+    "stance": "Contrast"
+  },
+  {
+    "evidence_id": "E0007",
+    "paper_id": "P0002",
+    "claim_id": "C0007",
+    "section": "5.4 Hybrid retrieval",
+    "page": 9,
+    "quote": "Hybrid retrieval improves recall@10 by 6.2 points.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0008",
+    "paper_id": "P0002",
+    "claim_id": "C0008",
+    "section": "5.5 Cost",
+    "page": 10,
+    "quote": "Latency grows linearly with memory size beyond 100k entries.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0009",
+    "paper_id": "P0003",
+    "claim_id": "C0009",
+    "section": "4.2 Reflection",
+    "page": 5,
+    "quote": "Reflection consolidates episodic traces into semantic memory.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0010",
+    "paper_id": "P0003",
+    "claim_id": "C0010",
+    "section": "5.1 ALFWorld",
+    "page": 7,
+    "quote": "Reflection improves success rate from 61% to 70%.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0011",
+    "paper_id": "P0003",
+    "claim_id": "C0011",
+    "section": "5.3 Ablation",
+    "page": 8,
+    "quote": "Without retrieval, reflection reduces success rate.",
+    "stance": "Contrast"
+  },
+  {
+    "evidence_id": "E0012",
+    "paper_id": "P0003",
+    "claim_id": "C0012",
+    "section": "5.4 Cost",
+    "page": 9,
+    "quote": "Consolidation lowers tokens per episode by 18%.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0013",
+    "paper_id": "P0004",
+    "claim_id": "C0013",
+    "section": "3.1 Audit",
+    "page": 4,
+    "quote": "Most benchmarks conflate short-term and long-term memory.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0014",
+    "paper_id": "P0004",
+    "claim_id": "C0014",
+    "section": "4.2 Temporal",
+    "page": 6,
+    "quote": "All retrieval variants fail on temporal ordering questions.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0015",
+    "paper_id": "P0004",
+    "claim_id": "C0015",
+    "section": "4.3 Scaling",
+    "page": 7,
+    "quote": "Accuracy plateaus after 10k memory entries.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0016",
+    "paper_id": "P0004",
+    "claim_id": "C0016",
+    "section": "5. Metrics",
+    "page": 9,
+    "quote": "Recall, precision, and update fidelity should be reported separately.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0017",
+    "paper_id": "P0005",
+    "claim_id": "C0017",
+    "section": "4.1 Editing",
+    "page": 5,
+    "quote": "Direct editing removes outdated facts in 87% of trials.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0018",
+    "paper_id": "P0005",
+    "claim_id": "C0018",
+    "section": "4.2 Side effects",
+    "page": 6,
+    "quote": "Editing one fact degrades related facts in 23% of cases.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0019",
+    "paper_id": "P0005",
+    "claim_id": "C0019",
+    "section": "5.2 Decay",
+    "page": 8,
+    "quote": "Decay-based forgetting improves out-of-distribution accuracy by 2.1 points.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0020",
+    "paper_id": "P0005",
+    "claim_id": "C0020",
+    "section": "6. Audit",
+    "page": 10,
+    "quote": "Every edit should be recorded with a versioned audit log.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0021",
+    "paper_id": "P0002",
+    "claim_id": "C0006",
+    "section": "5.3 Ablation",
+    "page": 8,
+    "quote": "Retrieval quality, not memory size, dominates performance.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0022",
+    "paper_id": "P0004",
+    "claim_id": "C0010",
+    "section": "4.4 Replication",
+    "page": 8,
+    "quote": "We could not reproduce the reported reflection gains on ALFWorld.",
+    "stance": "Contrast"
+  },
+  {
+    "evidence_id": "E0023",
+    "paper_id": "P0005",
+    "claim_id": "C0018",
+    "section": "4.3 Analysis",
+    "page": 7,
+    "quote": "Collateral forgetting persists after re-training.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0024",
+    "paper_id": "P0004",
+    "claim_id": "C0013",
+    "section": "3.2 Benchmarks",
+    "page": 5,
+    "quote": "Only two of five benchmarks include update events.",
+    "stance": "Support"
+  },
+  {
+    "evidence_id": "E0025",
+    "paper_id": "P0005",
+    "claim_id": "C0003",
+    "section": "2. Related work",
+    "page": 2,
+    "quote": "Survey-era consolidation results are superseded by edit-based protocols.",
+    "stance": "Background"
+  }
+]

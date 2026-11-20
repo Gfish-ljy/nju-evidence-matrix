@@ -1,0 +1,211 @@
+[
+  {
+    "relation_id": "R0001",
+    "source_claim_id": "C0005",
+    "target_claim_id": "C0002",
+    "type": "Supports",
+    "confidence": 0.86,
+    "evidence_ids": [
+      "E0005",
+      "E0002"
+    ],
+    "condition_comparability": "Comparable",
+    "created_at": "2026-11-19T09:00:00Z"
+  },
+  {
+    "relation_id": "R0002",
+    "source_claim_id": "C0007",
+    "target_claim_id": "C0006",
+    "type": "Supports",
+    "confidence": 0.71,
+    "evidence_ids": [
+      "E0007",
+      "E0006"
+    ],
+    "condition_comparability": "Comparable",
+    "created_at": "2026-11-19T09:00:00Z"
+  },
+  {
+    "relation_id": "R0003",
+    "source_claim_id": "C0012",
+    "target_claim_id": "C0009",
+    "type": "Supports",
+    "confidence": 0.78,
+    "evidence_ids": [
+      "E0012",
+      "E0009"
+    ],
+    "condition_comparability": "Comparable",
+    "created_at": "2026-11-19T09:00:00Z"
+  },
+  {
+    "relation_id": "R0004",
+    "source_claim_id": "C0016",
+    "target_claim_id": "C0004",
+    "type": "Refines",
+    "confidence": 0.9,
+    "evidence_ids": [
+      "E0016",
+      "E0004"
+    ],
+    "condition_comparability": "Comparable",
+    "created_at": "2026-11-19T09:00:00Z"
+  },
+  {
+    "relation_id": "R0005",
+    "source_claim_id": "C0020",
+    "target_claim_id": "C0017",
+    "type": "Refines",
+    "confidence": 0.83,
+    "evidence_ids": [
+      "E0020",
+      "E0017"
+    ],
+    "condition_comparability": "Comparable",
+    "created_at": "2026-11-19T09:00:00Z"
+  },
+  {
+    "relation_id": "R0006",
+    "source_claim_id": "C0014",
+    "target_claim_id": "C0006",
+    "type": "Extends",
+    "confidence": 0.74,
+    "evidence_ids": [
+      "E0014",
+      "E0006"
+    ],
+    "condition_comparability": "Comparable",
+    "created_at": "2026-11-19T09:00:00Z"
+  },
+  {
+    "relation_id": "R0007",
+    "source_claim_id": "C0019",
+    "target_claim_id": "C0018",
+    "type": "Extends",
+    "confidence": 0.63,
+    "evidence_ids": [
+      "E0019",
+      "E0018"
+    ],
+    "condition_comparability": "Partial",
+    "created_at": "2026-11-19T09:00:00Z"
+  },
+  {
+    "relation_id": "R0008",
+    "source_claim_id": "C0011",
+    "target_claim_id": "C0009",
+    "type": "Qualifies",
+    "confidence": 0.81,
+    "evidence_ids": [
+      "E0011",
+      "E0009"
+    ],
+    "condition_comparability": "Comparable",
+    "created_at": "2026-11-19T09:00:00Z"
+  },
+  {
+    "relation_id": "R0009",
+    "source_claim_id": "C0015",
+    "target_claim_id": "C0008",
+    "type": "Qualifies",
+    "confidence": 0.69,
+    "evidence_ids": [
+      "E0015",
+      "E0008"
+    ],
+    "condition_comparability": "Partial",
+    "created_at": "2026-11-19T09:00:00Z"
+  },
+  {
+    "relation_id": "R0010",
+    "source_claim_id": "C0008",
+    "target_claim_id": "C0005",
+    "type": "Qualifies",
+    "confidence": 0.72,
+    "evidence_ids": [
+      "E0008",
+      "E0005"
+    ],
+    "condition_comparability": "Comparable",
+    "created_at": "2026-11-19T09:00:00Z"
+  },
+  {
+    "relation_id": "R0011",
+    "source_claim_id": "C0010",
+    "target_claim_id": "C0009",
+    "type": "Contradicts",
+    "confidence": 0.88,
+    "evidence_ids": [
+      "E0010",
+      "E0009",
+      "E0022"
+    ],
+    "condition_comparability": "Partial",
+    "created_at": "2026-11-19T09:00:00Z"
+  },
+  {
+    "relation_id": "R0012",
+    "source_claim_id": "C0013",
+    "target_claim_id": "C0002",
+    "type": "Contradicts",
+    "confidence": 0.76,
+    "evidence_ids": [
+      "E0013",
+      "E0002"
+    ],
+    "condition_comparability": "Partial",
+    "created_at": "2026-11-19T09:00:00Z"
+  },
+  {
+    "relation_id": "R0013",
+    "source_claim_id": "C0018",
+    "target_claim_id": "C0017",
+    "type": "Contradicts",
+    "confidence": 0.84,
+    "evidence_ids": [
+      "E0018",
+      "E0017"
+    ],
+    "condition_comparability": "Comparable",
+    "created_at": "2026-11-19T09:00:00Z"
+  },
+  {
+    "relation_id": "R0014",
+    "source_claim_id": "C0015",
+    "target_claim_id": "C0005",
+    "type": "Contradicts",
+    "confidence": 0.58,
+    "evidence_ids": [
+      "E0015",
+      "E0005"
+    ],
+    "condition_comparability": "Incomparable",
+    "created_at": "2026-11-19T09:00:00Z"
+  },
+  {
+    "relation_id": "R0015",
+    "source_claim_id": "C0017",
+    "target_claim_id": "C0012",
+    "type": "Extends",
+    "confidence": 0.61,
+    "evidence_ids": [
+      "E0017",
+      "E0012"
+    ],
+    "condition_comparability": "Partial",
+    "created_at": "2026-11-19T09:00:00Z"
+  },
+  {
+    "relation_id": "R0016",
+    "source_claim_id": "C0017",
+    "target_claim_id": "C0003",
+    "type": "Supersedes",
+    "confidence": 0.8,
+    "evidence_ids": [
+      "E0025",
+      "E0017"
+    ],
+    "condition_comparability": "Comparable",
+    "created_at": "2026-11-19T09:00:00Z"
+  }
+]

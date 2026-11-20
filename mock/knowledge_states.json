@@ -1,0 +1,207 @@
+[
+  {
+    "claim_id": "C0001",
+    "state": "Supported",
+    "version": 1,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0001"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  },
+  {
+    "claim_id": "C0002",
+    "state": "Supported",
+    "version": 2,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0002"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  },
+  {
+    "claim_id": "C0003",
+    "state": "Superseded",
+    "version": 2,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0003",
+      "E0025"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  },
+  {
+    "claim_id": "C0004",
+    "state": "Supported",
+    "version": 1,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0004"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  },
+  {
+    "claim_id": "C0005",
+    "state": "Supported",
+    "version": 3,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0005"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  },
+  {
+    "claim_id": "C0006",
+    "state": "Contested",
+    "version": 2,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0006",
+      "E0021"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  },
+  {
+    "claim_id": "C0007",
+    "state": "WeaklySupported",
+    "version": 1,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0007"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  },
+  {
+    "claim_id": "C0008",
+    "state": "Qualified",
+    "version": 2,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0008"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  },
+  {
+    "claim_id": "C0009",
+    "state": "Supported",
+    "version": 2,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0009"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  },
+  {
+    "claim_id": "C0010",
+    "state": "Contested",
+    "version": 3,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0010",
+      "E0022"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  },
+  {
+    "claim_id": "C0011",
+    "state": "Qualified",
+    "version": 1,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0011"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  },
+  {
+    "claim_id": "C0012",
+    "state": "Supported",
+    "version": 1,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0012"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  },
+  {
+    "claim_id": "C0013",
+    "state": "Contested",
+    "version": 2,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0013",
+      "E0024"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  },
+  {
+    "claim_id": "C0014",
+    "state": "Supported",
+    "version": 1,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0014"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  },
+  {
+    "claim_id": "C0015",
+    "state": "Unresolved",
+    "version": 2,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0015"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  },
+  {
+    "claim_id": "C0016",
+    "state": "Supported",
+    "version": 1,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0016"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  },
+  {
+    "claim_id": "C0017",
+    "state": "Supported",
+    "version": 2,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0017"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  },
+  {
+    "claim_id": "C0018",
+    "state": "Contested",
+    "version": 2,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0018",
+      "E0023"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  },
+  {
+    "claim_id": "C0019",
+    "state": "WeaklySupported",
+    "version": 1,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0019"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  },
+  {
+    "claim_id": "C0020",
+    "state": "Supported",
+    "version": 1,
+    "updated_at": "2026-11-20T09:00:00Z",
+    "basis_evidence_ids": [
+      "E0020"
+    ],
+    "summary": "Mock state for UI and contract testing."
+  }
+]

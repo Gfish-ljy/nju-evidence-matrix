@@ -1,0 +1,170 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://evidencematrix.local/schema_v0.json",
+  "title": "EvidenceMatrix MVP Schema v0.1",
+  "description": "Agent Memory MVP 的字段、类型与枚举定义。8 个对象；与《统一接口与文档说明 v0.1》一致。",
+  "$defs": {
+    "RelationType": {
+      "type": "string",
+      "enum": ["Supports", "Contradicts", "Extends", "Refines", "Qualifies", "Supersedes"]
+    },
+    "KnowledgeStateType": {
+      "type": "string",
+      "enum": ["Supported", "Contested", "Qualified", "WeaklySupported", "Superseded", "Unresolved"]
+    },
+    "StanceType": {
+      "type": "string",
+      "enum": ["Support", "Contrast", "Background", "Method"]
+    },
+    "ComparabilityType": {
+      "type": "string",
+      "enum": ["Comparable", "Partial", "Incomparable"]
+    },
+    "ReviewStatusType": {
+      "type": "string",
+      "enum": ["Pending", "Accepted", "Rejected", "Edited"]
+    },
+    "ClusterLevelType": {
+      "type": "string",
+      "enum": ["problem", "task", "method"]
+    },
+    "Paper": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["paper_id", "title", "year", "is_selected"],
+      "properties": {
+        "paper_id": {"type": "string", "pattern": "^P[0-9]{4}$"},
+        "title": {"type": "string", "minLength": 1},
+        "authors": {"type": "array", "items": {"type": "string"}},
+        "year": {"type": "integer", "minimum": 1900, "maximum": 2100},
+        "venue": {"type": ["string", "null"]},
+        "doi": {"type": ["string", "null"]},
+        "url": {"type": ["string", "null"], "format": "uri"},
+        "pdf_path": {"type": ["string", "null"]},
+        "citation_count": {"type": "integer", "minimum": 0},
+        "quality_score": {"type": "number", "minimum": 0, "maximum": 1},
+        "is_selected": {"type": "boolean"},
+        "selection_reason": {"type": ["string", "null"]}
+      }
+    },
+    "Claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claim_id", "paper_id", "problem", "finding", "evidence_ids", "status", "created_at"],
+      "properties": {
+        "claim_id": {"type": "string", "pattern": "^C[0-9]{4}$"},
+        "paper_id": {"type": "string", "pattern": "^P[0-9]{4}$"},
+        "problem": {"type": "string", "minLength": 1},
+        "method": {"type": ["string", "null"]},
+        "condition_id": {"type": ["string", "null"], "pattern": "^CD[0-9]{4}$"},
+        "finding": {"type": "string", "minLength": 1},
+        "evidence_ids": {"type": "array", "items": {"type": "string", "pattern": "^E[0-9]{4}$"}, "minItems": 1, "uniqueItems": true},
+        "status": {"$ref": "#/$defs/KnowledgeStateType"},
+        "cluster_id": {"type": ["string", "null"], "pattern": "^K[0-9]{2}$"},
+        "created_at": {"type": "string", "format": "date-time"}
+      }
+    },
+    "Condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["condition_id", "claim_id"],
+      "properties": {
+        "condition_id": {"type": "string", "pattern": "^CD[0-9]{4}$"},
+        "claim_id": {"type": "string", "pattern": "^C[0-9]{4}$"},
+        "dataset": {"type": ["string", "null"]},
+        "model": {"type": ["string", "null"]},
+        "task": {"type": ["string", "null"]},
+        "metrics": {"type": "array", "items": {"type": "string"}},
+        "hyperparams": {"type": "object"},
+        "scale": {"type": ["string", "null"]},
+        "notes": {"type": ["string", "null"]}
+      }
+    },
+    "Evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_id", "paper_id", "claim_id", "quote", "stance"],
+      "properties": {
+        "evidence_id": {"type": "string", "pattern": "^E[0-9]{4}$"},
+        "paper_id": {"type": "string", "pattern": "^P[0-9]{4}$"},
+        "claim_id": {"type": "string", "pattern": "^C[0-9]{4}$"},
+        "section": {"type": ["string", "null"]},
+        "page": {"type": ["integer", "null"], "minimum": 1},
+        "quote": {"type": "string", "minLength": 1},
+        "stance": {"$ref": "#/$defs/StanceType"},
+        "bbox": {"type": "array", "items": {"type": "number"}, "maxItems": 4}
+      }
+    },
+    "Relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["relation_id", "source_claim_id", "target_claim_id", "type", "confidence", "evidence_ids", "condition_comparability"],
+      "properties": {
+        "relation_id": {"type": "string", "pattern": "^R[0-9]{4}$"},
+        "source_claim_id": {"type": "string", "pattern": "^C[0-9]{4}$"},
+        "target_claim_id": {"type": "string", "pattern": "^C[0-9]{4}$"},
+        "type": {"$ref": "#/$defs/RelationType"},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "evidence_ids": {"type": "array", "items": {"type": "string", "pattern": "^E[0-9]{4}$"}, "minItems": 1, "uniqueItems": true},
+        "condition_comparability": {"$ref": "#/$defs/ComparabilityType"},
+        "created_at": {"type": "string", "format": "date-time"}
+      }
+    },
+    "Cluster": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cluster_id", "label", "level", "claim_ids", "paper_count", "status_distribution"],
+      "properties": {
+        "cluster_id": {"type": "string", "pattern": "^K[0-9]{2}$"},
+        "label": {"type": "string", "minLength": 1},
+        "level": {"$ref": "#/$defs/ClusterLevelType"},
+        "claim_ids": {"type": "array", "items": {"type": "string", "pattern": "^C[0-9]{4}$"}, "minItems": 1, "uniqueItems": true},
+        "paper_count": {"type": "integer", "minimum": 1},
+        "status_distribution": {
+          "type": "object",
+          "propertyNames": {"$ref": "#/$defs/KnowledgeStateType"},
+          "additionalProperties": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "KnowledgeState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claim_id", "state", "version", "updated_at", "basis_evidence_ids"],
+      "properties": {
+        "claim_id": {"type": "string", "pattern": "^C[0-9]{4}$"},
+        "state": {"$ref": "#/$defs/KnowledgeStateType"},
+        "version": {"type": "integer", "minimum": 1},
+        "updated_at": {"type": "string", "format": "date-time"},
+        "basis_evidence_ids": {"type": "array", "items": {"type": "string", "pattern": "^E[0-9]{4}$"}, "minItems": 1, "uniqueItems": true},
+        "summary": {"type": ["string", "null"]}
+      }
+    },
+    "UpdateLog": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["update_id", "claim_id", "from_state", "to_state", "delta_evidence_ids", "reason", "operator", "reviewed", "timestamp"],
+      "properties": {
+        "update_id": {"type": "string", "pattern": "^U[0-9]{4}$"},
+        "claim_id": {"type": "string", "pattern": "^C[0-9]{4}$"},
+        "from_state": {"$ref": "#/$defs/KnowledgeStateType"},
+        "to_state": {"$ref": "#/$defs/KnowledgeStateType"},
+        "delta_evidence_ids": {"type": "array", "items": {"type": "string", "pattern": "^E[0-9]{4}$"}, "minItems": 1, "uniqueItems": true},
+        "reason": {"type": "string", "minLength": 1},
+        "operator": {"type": "string", "minLength": 1},
+        "reviewed": {"type": "boolean"},
+        "timestamp": {"type": "string", "format": "date-time"}
+      }
+    }
+  },
+  "oneOf": [
+    {"$ref": "#/$defs/Paper"},
+    {"$ref": "#/$defs/Claim"},
+    {"$ref": "#/$defs/Condition"},
+    {"$ref": "#/$defs/Evidence"},
+    {"$ref": "#/$defs/Relation"},
+    {"$ref": "#/$defs/Cluster"},
+    {"$ref": "#/$defs/KnowledgeState"},
+    {"$ref": "#/$defs/UpdateLog"}
+  ]
+}

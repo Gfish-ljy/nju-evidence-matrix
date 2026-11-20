@@ -1,0 +1,9 @@
+source_paper_id,target_paper_id,citation_context,section,stance,confidence
+P0002,P0001,We build on the taxonomy of memory mechanisms.,2. Related work,Background,0.9
+P0003,P0001,"Prior surveys group memory into retrieval, consolidation and editing.",2. Related work,Background,0.88
+P0003,P0002,Retrieval pipelines are the closest work to our reflection loop.,2. Related work,Method,0.8
+P0004,P0001,Surveys call for standardized long-term memory evaluation.,1. Introduction,Background,0.85
+P0004,P0002,We test retrieval-augmented memory under controlled settings.,3. Setup,Method,0.82
+P0004,P0003,We attempt to reproduce the reported reflection gains.,4.4 Replication,Contrast,0.9
+P0005,P0002,Retrieval stores make stored facts editable.,2. Related work,Method,0.75
+P0005,P0003,Consolidation motivates our edit protocol.,2. Related work,Background,0.78

@@ -1,0 +1,87 @@
+[
+  {
+    "cluster_id": "K01",
+    "label": "Memory retrieval",
+    "level": "problem",
+    "claim_ids": [
+      "C0002",
+      "C0005",
+      "C0006",
+      "C0007",
+      "C0008"
+    ],
+    "paper_count": 2,
+    "status_distribution": {
+      "Supported": 2,
+      "Contested": 1,
+      "WeaklySupported": 1,
+      "Qualified": 1
+    }
+  },
+  {
+    "cluster_id": "K02",
+    "label": "Memory consolidation",
+    "level": "problem",
+    "claim_ids": [
+      "C0003",
+      "C0009",
+      "C0010",
+      "C0011",
+      "C0012"
+    ],
+    "paper_count": 2,
+    "status_distribution": {
+      "Supported": 2,
+      "Superseded": 1,
+      "Contested": 1,
+      "Qualified": 1
+    }
+  },
+  {
+    "cluster_id": "K03",
+    "label": "Memory editing and forgetting",
+    "level": "problem",
+    "claim_ids": [
+      "C0017",
+      "C0018",
+      "C0019",
+      "C0020"
+    ],
+    "paper_count": 1,
+    "status_distribution": {
+      "Supported": 2,
+      "Contested": 1,
+      "WeaklySupported": 1
+    }
+  },
+  {
+    "cluster_id": "K04",
+    "label": "Long-term memory evaluation",
+    "level": "task",
+    "claim_ids": [
+      "C0004",
+      "C0013",
+      "C0014",
+      "C0015",
+      "C0016"
+    ],
+    "paper_count": 2,
+    "status_distribution": {
+      "Supported": 3,
+      "Contested": 1,
+      "Unresolved": 1
+    }
+  },
+  {
+    "cluster_id": "K05",
+    "label": "Memory architecture",
+    "level": "method",
+    "claim_ids": [
+      "C0001"
+    ],
+    "paper_count": 1,
+    "status_distribution": {
+      "Supported": 1
+    }
+  }
+]

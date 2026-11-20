@@ -1,0 +1,67 @@
+[
+  {
+    "update_id": "U0001",
+    "claim_id": "C0006",
+    "from_state": "Unresolved",
+    "to_state": "Contested",
+    "delta_evidence_ids": [
+      "E0021"
+    ],
+    "reason": "New ablation evidence shows retrieval quality dominates",
+    "operator": "D",
+    "reviewed": false,
+    "timestamp": "2026-11-18T10:00:00Z"
+  },
+  {
+    "update_id": "U0002",
+    "claim_id": "C0010",
+    "from_state": "Supported",
+    "to_state": "Contested",
+    "delta_evidence_ids": [
+      "E0022"
+    ],
+    "reason": "Independent replication failed",
+    "operator": "D",
+    "reviewed": true,
+    "timestamp": "2026-11-19T10:00:00Z"
+  },
+  {
+    "update_id": "U0003",
+    "claim_id": "C0003",
+    "from_state": "Supported",
+    "to_state": "Superseded",
+    "delta_evidence_ids": [
+      "E0025"
+    ],
+    "reason": "Edit-based protocols supersede survey-era consolidation results",
+    "operator": "D",
+    "reviewed": true,
+    "timestamp": "2026-11-19T11:00:00Z"
+  },
+  {
+    "update_id": "U0004",
+    "claim_id": "C0015",
+    "from_state": "Contested",
+    "to_state": "Unresolved",
+    "delta_evidence_ids": [
+      "E0015"
+    ],
+    "reason": "Scaling evidence inconclusive",
+    "operator": "D",
+    "reviewed": false,
+    "timestamp": "2026-11-20T09:00:00Z"
+  },
+  {
+    "update_id": "U0005",
+    "claim_id": "C0020",
+    "from_state": "WeaklySupported",
+    "to_state": "Supported",
+    "delta_evidence_ids": [
+      "E0020"
+    ],
+    "reason": "Audit protocol validated",
+    "operator": "D",
+    "reviewed": true,
+    "timestamp": "2026-11-20T10:00:00Z"
+  }
+]

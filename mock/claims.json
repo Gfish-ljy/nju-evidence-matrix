@@ -1,0 +1,287 @@
+[
+  {
+    "claim_id": "C0001",
+    "paper_id": "P0001",
+    "problem": "How do LLM agents implement persistent memory?",
+    "method": "Survey of memory mechanisms",
+    "condition_id": "CD0001",
+    "finding": "Memory mechanisms can be grouped into retrieval, consolidation, and editing.",
+    "evidence_ids": [
+      "E0001"
+    ],
+    "status": "Supported",
+    "cluster_id": "K05",
+    "created_at": "2026-11-18T09:00:00Z"
+  },
+  {
+    "claim_id": "C0002",
+    "paper_id": "P0001",
+    "problem": "Does retrieval improve long-horizon tasks?",
+    "method": "Literature synthesis",
+    "condition_id": "CD0002",
+    "finding": "Retrieval-based memory improves long-horizon task success.",
+    "evidence_ids": [
+      "E0002"
+    ],
+    "status": "Supported",
+    "cluster_id": "K01",
+    "created_at": "2026-11-18T09:00:00Z"
+  },
+  {
+    "claim_id": "C0003",
+    "paper_id": "P0001",
+    "problem": "Does memory consolidation reduce redundant retrieval?",
+    "method": "Survey coding",
+    "condition_id": "CD0003",
+    "finding": "Consolidation reduces redundant retrieval in most surveyed systems.",
+    "evidence_ids": [
+      "E0003",
+      "E0025"
+    ],
+    "status": "Superseded",
+    "cluster_id": "K02",
+    "created_at": "2026-11-18T09:00:00Z"
+  },
+  {
+    "claim_id": "C0004",
+    "paper_id": "P0001",
+    "problem": "Are there standard long-term memory benchmarks?",
+    "method": "Survey",
+    "condition_id": "CD0004",
+    "finding": "Evaluation lacks standardized long-term memory benchmarks.",
+    "evidence_ids": [
+      "E0004"
+    ],
+    "status": "Supported",
+    "cluster_id": "K04",
+    "created_at": "2026-11-18T09:00:00Z"
+  },
+  {
+    "claim_id": "C0005",
+    "paper_id": "P0002",
+    "problem": "Can vector retrieval outperform full-context prompting?",
+    "method": "Vector retrieval over memory store",
+    "condition_id": "CD0005",
+    "finding": "Retrieval outperforms full-context prompting beyond 8k tokens.",
+    "evidence_ids": [
+      "E0005"
+    ],
+    "status": "Supported",
+    "cluster_id": "K01",
+    "created_at": "2026-11-18T09:00:00Z"
+  },
+  {
+    "claim_id": "C0006",
+    "paper_id": "P0002",
+    "problem": "What limits retrieval-augmented memory?",
+    "method": "Ablation study",
+    "condition_id": "CD0006",
+    "finding": "Retrieval quality is the main bottleneck; gains vanish with noisy memory.",
+    "evidence_ids": [
+      "E0006",
+      "E0021"
+    ],
+    "status": "Contested",
+    "cluster_id": "K01",
+    "created_at": "2026-11-18T09:00:00Z"
+  },
+  {
+    "claim_id": "C0007",
+    "paper_id": "P0002",
+    "problem": "Does hybrid retrieval improve recall?",
+    "method": "Sparse plus dense hybrid retrieval",
+    "condition_id": "CD0007",
+    "finding": "Hybrid retrieval improves recall by 6 points on MemoryQA.",
+    "evidence_ids": [
+      "E0007"
+    ],
+    "status": "WeaklySupported",
+    "cluster_id": "K01",
+    "created_at": "2026-11-18T09:00:00Z"
+  },
+  {
+    "claim_id": "C0008",
+    "paper_id": "P0002",
+    "problem": "How does retrieval cost scale with memory size?",
+    "method": "Cost analysis",
+    "condition_id": "CD0008",
+    "finding": "Retrieval latency grows linearly with memory size above 100k entries.",
+    "evidence_ids": [
+      "E0008"
+    ],
+    "status": "Qualified",
+    "cluster_id": "K01",
+    "created_at": "2026-11-18T09:00:00Z"
+  },
+  {
+    "claim_id": "C0009",
+    "paper_id": "P0003",
+    "problem": "Does reflection consolidate episodic memory?",
+    "method": "Reflection loop plus semantic store",
+    "condition_id": "CD0009",
+    "finding": "Reflection consolidates episodic memory into reusable semantic memory.",
+    "evidence_ids": [
+      "E0009"
+    ],
+    "status": "Supported",
+    "cluster_id": "K02",
+    "created_at": "2026-11-18T09:00:00Z"
+  },
+  {
+    "claim_id": "C0010",
+    "paper_id": "P0003",
+    "problem": "Does reflection improve task success?",
+    "method": "Reflection agent on ALFWorld",
+    "condition_id": "CD0010",
+    "finding": "Reflection improves ALFWorld success rate by 9 points.",
+    "evidence_ids": [
+      "E0010",
+      "E0022"
+    ],
+    "status": "Contested",
+    "cluster_id": "K02",
+    "created_at": "2026-11-18T09:00:00Z"
+  },
+  {
+    "claim_id": "C0011",
+    "paper_id": "P0003",
+    "problem": "Is retrieval required for reflection to help?",
+    "method": "Ablation without retrieval",
+    "condition_id": "CD0011",
+    "finding": "Reflection without retrieval degrades performance.",
+    "evidence_ids": [
+      "E0011"
+    ],
+    "status": "Qualified",
+    "cluster_id": "K02",
+    "created_at": "2026-11-18T09:00:00Z"
+  },
+  {
+    "claim_id": "C0012",
+    "paper_id": "P0003",
+    "problem": "Does consolidation reduce token usage?",
+    "method": "Token accounting",
+    "condition_id": "CD0012",
+    "finding": "Consolidation reduces tokens per episode by 18%.",
+    "evidence_ids": [
+      "E0012"
+    ],
+    "status": "Supported",
+    "cluster_id": "K02",
+    "created_at": "2026-11-18T09:00:00Z"
+  },
+  {
+    "claim_id": "C0013",
+    "paper_id": "P0004",
+    "problem": "Do existing benchmarks measure long-term memory?",
+    "method": "Benchmark audit",
+    "condition_id": "CD0013",
+    "finding": "Existing benchmarks overestimate long-term memory ability.",
+    "evidence_ids": [
+      "E0013",
+      "E0024"
+    ],
+    "status": "Contested",
+    "cluster_id": "K04",
+    "created_at": "2026-11-18T09:00:00Z"
+  },
+  {
+    "claim_id": "C0014",
+    "paper_id": "P0004",
+    "problem": "Do retrieval methods handle temporal reasoning?",
+    "method": "Controlled benchmark",
+    "condition_id": "CD0014",
+    "finding": "Retrieval-augmented agents fail on temporal reasoning tasks.",
+    "evidence_ids": [
+      "E0014"
+    ],
+    "status": "Supported",
+    "cluster_id": "K04",
+    "created_at": "2026-11-18T09:00:00Z"
+  },
+  {
+    "claim_id": "C0015",
+    "paper_id": "P0004",
+    "problem": "Does larger memory improve accuracy?",
+    "method": "Scaling study",
+    "condition_id": "CD0015",
+    "finding": "Accuracy plateaus beyond 10k memory entries.",
+    "evidence_ids": [
+      "E0015"
+    ],
+    "status": "Unresolved",
+    "cluster_id": "K04",
+    "created_at": "2026-11-18T09:00:00Z"
+  },
+  {
+    "claim_id": "C0016",
+    "paper_id": "P0004",
+    "problem": "How should memory be evaluated?",
+    "method": "Metric design",
+    "condition_id": "CD0016",
+    "finding": "Evaluation should separate recall, precision, and update fidelity.",
+    "evidence_ids": [
+      "E0016"
+    ],
+    "status": "Supported",
+    "cluster_id": "K04",
+    "created_at": "2026-11-18T09:00:00Z"
+  },
+  {
+    "claim_id": "C0017",
+    "paper_id": "P0005",
+    "problem": "Can outdated facts be removed by editing?",
+    "method": "Direct memory editing",
+    "condition_id": "CD0017",
+    "finding": "Direct editing removes outdated facts in 87% of cases.",
+    "evidence_ids": [
+      "E0017"
+    ],
+    "status": "Supported",
+    "cluster_id": "K03",
+    "created_at": "2026-11-18T09:00:00Z"
+  },
+  {
+    "claim_id": "C0018",
+    "paper_id": "P0005",
+    "problem": "Does editing cause collateral forgetting?",
+    "method": "Controlled edit suite",
+    "condition_id": "CD0018",
+    "finding": "Editing causes collateral forgetting of related facts.",
+    "evidence_ids": [
+      "E0018",
+      "E0023"
+    ],
+    "status": "Contested",
+    "cluster_id": "K03",
+    "created_at": "2026-11-18T09:00:00Z"
+  },
+  {
+    "claim_id": "C0019",
+    "paper_id": "P0005",
+    "problem": "Does decay-based forgetting improve generalization?",
+    "method": "Decay-based forgetting",
+    "condition_id": "CD0019",
+    "finding": "Decay improves out-of-distribution generalization slightly.",
+    "evidence_ids": [
+      "E0019"
+    ],
+    "status": "WeaklySupported",
+    "cluster_id": "K03",
+    "created_at": "2026-11-18T09:00:00Z"
+  },
+  {
+    "claim_id": "C0020",
+    "paper_id": "P0005",
+    "problem": "Do edit protocols need audit logs?",
+    "method": "Audit protocol",
+    "condition_id": "CD0020",
+    "finding": "Edit protocols require versioned audit logs.",
+    "evidence_ids": [
+      "E0020"
+    ],
+    "status": "Supported",
+    "cluster_id": "K03",
+    "created_at": "2026-11-18T09:00:00Z"
+  }
+]

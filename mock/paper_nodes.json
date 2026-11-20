@@ -1,0 +1,83 @@
+[
+  {
+    "paper_id": "P0001",
+    "title": "Memory Mechanisms for LLM Agents: A Survey",
+    "authors": [
+      "Mock Author A",
+      "Mock Author B"
+    ],
+    "year": 2023,
+    "venue": "arXiv",
+    "doi": null,
+    "url": "https://arxiv.org/abs/2301.00001",
+    "pdf_path": "pdfs/P0001.pdf",
+    "citation_count": 120,
+    "quality_score": 0.82,
+    "is_selected": true,
+    "selection_reason": "survey covering retrieval, consolidation and editing"
+  },
+  {
+    "paper_id": "P0002",
+    "title": "Retrieval-Augmented Memory for Long-Horizon Agents",
+    "authors": [
+      "Mock Author C"
+    ],
+    "year": 2024,
+    "venue": "ACL",
+    "doi": null,
+    "url": "https://arxiv.org/abs/2401.00002",
+    "pdf_path": "pdfs/P0002.pdf",
+    "citation_count": 64,
+    "quality_score": 0.88,
+    "is_selected": true,
+    "selection_reason": "core retrieval method"
+  },
+  {
+    "paper_id": "P0003",
+    "title": "Reflection-Based Memory Consolidation in LLM Agents",
+    "authors": [
+      "Mock Author D"
+    ],
+    "year": 2024,
+    "venue": "NeurIPS",
+    "doi": null,
+    "url": "https://arxiv.org/abs/2401.00003",
+    "pdf_path": "pdfs/P0003.pdf",
+    "citation_count": 51,
+    "quality_score": 0.86,
+    "is_selected": true,
+    "selection_reason": "consolidation and reflection"
+  },
+  {
+    "paper_id": "P0004",
+    "title": "Benchmarking Long-Term Memory in LLM Agents",
+    "authors": [
+      "Mock Author E"
+    ],
+    "year": 2025,
+    "venue": "ICLR",
+    "doi": null,
+    "url": "https://arxiv.org/abs/2501.00004",
+    "pdf_path": "pdfs/P0004.pdf",
+    "citation_count": 38,
+    "quality_score": 0.9,
+    "is_selected": true,
+    "selection_reason": "benchmark and replication"
+  },
+  {
+    "paper_id": "P0005",
+    "title": "Memory Editing and Forgetting for LLM Agents",
+    "authors": [
+      "Mock Author F"
+    ],
+    "year": 2025,
+    "venue": "EMNLP",
+    "doi": null,
+    "url": "https://arxiv.org/abs/2501.00005",
+    "pdf_path": "pdfs/P0005.pdf",
+    "citation_count": 22,
+    "quality_score": 0.84,
+    "is_selected": true,
+    "selection_reason": "editing and forgetting"
+  }
+]

@@ -1,0 +1,277 @@
+[
+  {
+    "condition_id": "CD0001",
+    "claim_id": "C0001",
+    "dataset": "60 memory systems",
+    "model": "various",
+    "task": "literature analysis",
+    "metrics": [
+      "coverage"
+    ],
+    "hyperparams": {},
+    "scale": "2020-2023",
+    "notes": "survey coding"
+  },
+  {
+    "condition_id": "CD0002",
+    "claim_id": "C0002",
+    "dataset": "34 studies",
+    "model": "various",
+    "task": "long-horizon agents",
+    "metrics": [
+      "success_rate"
+    ],
+    "hyperparams": {},
+    "scale": "2020-2023",
+    "notes": "synthesis"
+  },
+  {
+    "condition_id": "CD0003",
+    "claim_id": "C0003",
+    "dataset": "60 systems",
+    "model": "various",
+    "task": "retrieval",
+    "metrics": [
+      "redundant_retrieval_rate"
+    ],
+    "hyperparams": {},
+    "scale": null,
+    "notes": "survey"
+  },
+  {
+    "condition_id": "CD0004",
+    "claim_id": "C0004",
+    "dataset": "24 benchmarks",
+    "model": "n/a",
+    "task": "evaluation",
+    "metrics": [
+      "coverage"
+    ],
+    "hyperparams": {},
+    "scale": null,
+    "notes": "survey"
+  },
+  {
+    "condition_id": "CD0005",
+    "claim_id": "C0005",
+    "dataset": "MemoryQA",
+    "model": "GPT-4o",
+    "task": "long-horizon QA",
+    "metrics": [
+      "accuracy"
+    ],
+    "hyperparams": {
+      "top_k": 8
+    },
+    "scale": "8k-64k tokens",
+    "notes": null
+  },
+  {
+    "condition_id": "CD0006",
+    "claim_id": "C0006",
+    "dataset": "MemoryQA",
+    "model": "GPT-4o",
+    "task": "long-horizon QA",
+    "metrics": [
+      "accuracy",
+      "recall"
+    ],
+    "hyperparams": {
+      "noise": 0.3
+    },
+    "scale": null,
+    "notes": null
+  },
+  {
+    "condition_id": "CD0007",
+    "claim_id": "C0007",
+    "dataset": "MemoryQA",
+    "model": "GPT-4o",
+    "task": "long-horizon QA",
+    "metrics": [
+      "recall@10"
+    ],
+    "hyperparams": {
+      "alpha": 0.5
+    },
+    "scale": null,
+    "notes": null
+  },
+  {
+    "condition_id": "CD0008",
+    "claim_id": "C0008",
+    "dataset": "synthetic memory store",
+    "model": "n/a",
+    "task": "retrieval",
+    "metrics": [
+      "latency_ms"
+    ],
+    "hyperparams": {},
+    "scale": "10k-1M entries",
+    "notes": null
+  },
+  {
+    "condition_id": "CD0009",
+    "claim_id": "C0009",
+    "dataset": "ALFWorld",
+    "model": "GPT-4",
+    "task": "embodied QA",
+    "metrics": [
+      "consolidation_rate"
+    ],
+    "hyperparams": {
+      "reflection_rounds": 2
+    },
+    "scale": null,
+    "notes": null
+  },
+  {
+    "condition_id": "CD0010",
+    "claim_id": "C0010",
+    "dataset": "ALFWorld",
+    "model": "GPT-4",
+    "task": "embodied QA",
+    "metrics": [
+      "success_rate"
+    ],
+    "hyperparams": {},
+    "scale": null,
+    "notes": null
+  },
+  {
+    "condition_id": "CD0011",
+    "claim_id": "C0011",
+    "dataset": "ALFWorld",
+    "model": "GPT-4",
+    "task": "embodied QA",
+    "metrics": [
+      "success_rate"
+    ],
+    "hyperparams": {
+      "retrieval": false
+    },
+    "scale": null,
+    "notes": null
+  },
+  {
+    "condition_id": "CD0012",
+    "claim_id": "C0012",
+    "dataset": "ALFWorld",
+    "model": "GPT-4",
+    "task": "embodied QA",
+    "metrics": [
+      "tokens_per_episode"
+    ],
+    "hyperparams": {},
+    "scale": null,
+    "notes": null
+  },
+  {
+    "condition_id": "CD0013",
+    "claim_id": "C0013",
+    "dataset": "5 memory benchmarks",
+    "model": "various",
+    "task": "evaluation audit",
+    "metrics": [
+      "validity"
+    ],
+    "hyperparams": {},
+    "scale": null,
+    "notes": null
+  },
+  {
+    "condition_id": "CD0014",
+    "claim_id": "C0014",
+    "dataset": "TemporalQA",
+    "model": "GPT-4o",
+    "task": "temporal reasoning",
+    "metrics": [
+      "accuracy"
+    ],
+    "hyperparams": {},
+    "scale": null,
+    "notes": null
+  },
+  {
+    "condition_id": "CD0015",
+    "claim_id": "C0015",
+    "dataset": "MemoryQA",
+    "model": "GPT-4o",
+    "task": "QA",
+    "metrics": [
+      "accuracy"
+    ],
+    "hyperparams": {},
+    "scale": "1k-100k entries",
+    "notes": null
+  },
+  {
+    "condition_id": "CD0016",
+    "claim_id": "C0016",
+    "dataset": "MemoryQA",
+    "model": "n/a",
+    "task": "evaluation",
+    "metrics": [
+      "recall",
+      "precision",
+      "update_fidelity"
+    ],
+    "hyperparams": {},
+    "scale": null,
+    "notes": null
+  },
+  {
+    "condition_id": "CD0017",
+    "claim_id": "C0017",
+    "dataset": "EditBench",
+    "model": "GPT-4o",
+    "task": "fact editing",
+    "metrics": [
+      "edit_success"
+    ],
+    "hyperparams": {},
+    "scale": null,
+    "notes": null
+  },
+  {
+    "condition_id": "CD0018",
+    "claim_id": "C0018",
+    "dataset": "EditBench",
+    "model": "GPT-4o",
+    "task": "fact editing",
+    "metrics": [
+      "collateral_forgetting"
+    ],
+    "hyperparams": {},
+    "scale": null,
+    "notes": null
+  },
+  {
+    "condition_id": "CD0019",
+    "claim_id": "C0019",
+    "dataset": "MemoryQA-OOD",
+    "model": "GPT-4o",
+    "task": "out-of-distribution QA",
+    "metrics": [
+      "accuracy"
+    ],
+    "hyperparams": {
+      "decay": 0.9
+    },
+    "scale": null,
+    "notes": null
+  },
+  {
+    "condition_id": "CD0020",
+    "claim_id": "C0020",
+    "dataset": "EditBench",
+    "model": "n/a",
+    "task": "audit",
+    "metrics": [
+      "audit_coverage"
+    ],
+    "hyperparams": {},
+    "scale": null,
+    "notes": null
+  }
+]
