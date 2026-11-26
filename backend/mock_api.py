@@ -11,6 +11,8 @@ from pathlib import Path
 from urllib.parse import parse_qs
 from wsgiref.simple_server import make_server
 
+from backend.citation_index import CitationIndex
+
 ROOT = Path(__file__).resolve().parent.parent
 FILES = {
     "papers": ("paper_nodes.json", "paper_id"),
@@ -85,24 +87,69 @@ def paginate(rows, query, default_sort, allowed_sorts=()):
 
 
 class MockAPI:
-    def __init__(self, data_dir=ROOT / "mock"):
-        self.rows = {name: json.loads((data_dir / file).read_text(encoding="utf-8"))
-                     for name, (file, _) in FILES.items()}
+    def __init__(self, data_dir=ROOT / "mock", *, bundle=None, analysis_dir=None):
+        if analysis_dir is not None and bundle is None:
+            raise ValueError("--analysis-dir requires --bundle")
+        schema_path = ROOT / "docs/schema_v0.json"
+        if bundle is None:
+            self.rows = {name: json.loads((data_dir / file).read_text(encoding="utf-8"))
+                         for name, (file, _) in FILES.items()}
+        else:
+            # Real paper IDs and synthetic claim IDs must never be joined.
+            self.rows = {name: [] for name in FILES}
+            self.rows["papers"] = json.loads((bundle / "paper_nodes.json").read_text(encoding="utf-8"))
+            if analysis_dir is not None:
+                self.load_analysis(bundle, schema_path, analysis_dir)
         self.by_id = {name: {row[key]: row for row in self.rows[name]}
                       for name, (_, key) in FILES.items() if key}
+        self.citations = None
+        self.abstracts = {}
+        if bundle is not None:
+            self.citations = CitationIndex(bundle / "citations.json", self.by_id["papers"])
+            self.paper_edges = self.citations.graph_edges
+            text_data = json.loads((bundle / "parsed_documents.json").read_text(encoding="utf-8"))
+            if text_data["version"] != 1:
+                raise ValueError("unsupported parsed document version")
+            self.abstracts = {row["paper_id"]: row["abstract"] or "" for row in text_data["documents"]}
+        else:
+            self.paper_edges = self.read_mock_edges(data_dir)
+        self.defs = json.loads(schema_path.read_text(encoding="utf-8"))["$defs"]
+
+    def load_analysis(self, bundle, schema_path, analysis_dir):
+        try:
+            from mock.validate import validate
+        except ModuleNotFoundError as error:
+            if error.name != "jsonschema":
+                raise
+            raise ValueError("--analysis-dir requires mock/requirements-validation.txt") from error
+
+        files = {}
+        for name, (filename, _) in FILES.items():
+            if name != "papers" and (analysis_dir / filename).is_file():
+                files[filename] = json.loads((analysis_dir / filename).read_text(encoding="utf-8"))
+        if not files:
+            raise ValueError("analysis directory has no v0.1 analysis files")
+        errors = validate(bundle, schema_path, analysis=files)
+        if errors:
+            raise ValueError("analysis data failed validation:\n" + "\n".join(errors))
+        for name, (filename, _) in FILES.items():
+            if filename in files:
+                self.rows[name] = files[filename]
+
+    @staticmethod
+    def read_mock_edges(data_dir):
+        edges = []
         with (data_dir / "paper_edges.csv").open(encoding="utf-8", newline="") as file:
-            self.paper_edges = []
             occurrences = Counter()
             for edge in csv.DictReader(file):
                 content = json.dumps(edge, sort_keys=True, ensure_ascii=False).encode("utf-8")
                 fingerprint = hashlib.sha256(content).hexdigest()
                 occurrences[fingerprint] += 1
                 edge_id = f"citation:{fingerprint}:{occurrences[fingerprint]}"
-                self.paper_edges.append({"id": edge_id, "source": edge["source_paper_id"],
+                edges.append({"id": edge_id, "source": edge["source_paper_id"],
                                          "target": edge["target_paper_id"], "type": "Cites",
                                          "weight": float(edge["confidence"])})
-        schema = json.loads((ROOT / "docs/schema_v0.json").read_text(encoding="utf-8"))
-        self.defs = schema["$defs"]
+        return edges
 
     def enum(self, query, field, definition, *, required=False):
         values = self.defs[definition]["enum"] if isinstance(definition, str) else definition
@@ -158,6 +205,8 @@ class MockAPI:
         if not path.startswith("/api/v0/"):
             raise ApiError(404, "NOT_FOUND", "Route not found")
         parts = path.removeprefix("/api/v0/").strip("/").split("/")
+        if parts[0] == "experimental":
+            return self.dispatch_citations(parts[1:], query)
         if len(parts) == 2 and parts[0] == "papers":
             return self.get("papers", parts[1]), {}
         if parts[0] == "claims" and len(parts) in (2, 3):
@@ -179,7 +228,8 @@ class MockAPI:
             rows = exact(self.rows[route], year=integer(query, "year"), venue=query.get("venue"),
                          is_selected=boolean(query, "selected"))
             term = query.get("query", "").casefold()
-            rows = [row for row in rows if term in row["title"].casefold()]
+            rows = [row for row in rows if term in row["title"].casefold()
+                    or term in self.abstracts.get(row["paper_id"], "").casefold()]
             return paginate(rows, query, ("paper_id", "asc"),
                             ("paper_id", "title", "year", "venue", "citation_count", "quality_score"))
         if route == "claims":
@@ -211,6 +261,34 @@ class MockAPI:
         if route == "updates":
             rows = exact(self.rows[route], claim_id=query.get("claim_id"), reviewed=boolean(query, "reviewed"))
             return paginate(rows, query, ("timestamp", "desc"))
+        raise ApiError(404, "NOT_FOUND", "Route not found")
+
+    def dispatch_citations(self, parts, query):
+        if self.citations is None:
+            raise ApiError(422, "UNSUPPORTED", "A TEI bundle is required")
+        if len(parts) == 2 and parts[0] == "citations":
+            row = self.citations.by_id.get(parts[1])
+            if row is None:
+                raise ApiError(404, "NOT_FOUND", "Citation not found")
+            return row, {}
+        if parts == ["citation-matrix"]:
+            source = query.get("source_paper_id")
+            if source is not None:
+                self.get("papers", source)
+            return self.citations.matrix(source), {}
+        if parts == ["citations"]:
+            for field in ("source_paper_id", "reference_id"):
+                if not query.get(field):
+                    raise invalid(field, f"{field} is required")
+            pid, rid = query["source_paper_id"], query["reference_id"]
+            self.get("papers", pid)
+            if rid not in self.citations.references:
+                raise ApiError(404, "NOT_FOUND", "Reference not found")
+            rows = self.citations.by_cell.get((pid, rid), ())
+            page = integer(query, "page", 1)
+            size = integer(query, "size", 20, maximum=100)
+            offset = (page - 1) * size
+            return rows[offset:offset + size], {"page": page, "size": size, "total": len(rows)}
         raise ApiError(404, "NOT_FOUND", "Route not found")
 
     def __call__(self, environ, start_response):
@@ -253,9 +331,15 @@ class MockAPI:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--port", type=int, default=8000)
+    parser.add_argument("--bundle", type=Path, help="TEI bundle generated by backend.import_tei")
+    parser.add_argument("--analysis-dir", type=Path, help="Optional real v0.1 Claim and state data")
     args = parser.parse_args()
-    with make_server("127.0.0.1", args.port, MockAPI()) as server:
-        print(f"EvidenceMatrix mock API: http://127.0.0.1:{server.server_port}/api/v0", flush=True)
+    try:
+        app = MockAPI(bundle=args.bundle, analysis_dir=args.analysis_dir)
+    except (OSError, ValueError, KeyError, TypeError, csv.Error) as error:
+        parser.exit(1, f"Failed to load API data: {error}\n")
+    with make_server("127.0.0.1", args.port, app) as server:
+        print(f"EvidenceMatrix local API: http://127.0.0.1:{server.server_port}/api/v0", flush=True)
         try:
             server.serve_forever()
         except KeyboardInterrupt:

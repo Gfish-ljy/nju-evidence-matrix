@@ -18,7 +18,7 @@ python -m backend.mock_api --port 8000
 | `GET /api/v0/papers/P0004` | 通过 Evidence 的 paper_id 回到出处 |
 | `GET /api/v0/knowledge-states?claim_id=C0010`、`GET /api/v0/updates?claim_id=C0010` | 查看当前版本和更新记录 |
 
-现有 mock 只有标题，搜索按标题做不区分大小写的子串匹配。论文图预览以 `Cites` 标记 CSV 引用边，边 ID 仅供该 mock 图展示。引用次数矩阵、引用上下文下钻、论文级主张关系投影属于 PPT 中的工作台能力，现有 API 契约未定义对应输出。簇图聚合、证据矩阵和人工审核写入返回 `422 UNSUPPORTED`，待其业务规则评审。真实论文接入需要团队已有 GROBID 工具的输出样例。
+现有 mock 只有标题，搜索按标题做不区分大小写的子串匹配。论文图预览以 `Cites` 标记 CSV 引用边，边 ID 仅供该 mock 图展示。真实 TEI 数据、引用次数矩阵和引用上下文查询见 [GROBID TEI 离线接入](tei_handoff.md)。簇图聚合、证据矩阵和人工审核写入返回 `422 UNSUPPORTED`，待其业务规则评审。
 
 ```bash
 python -m unittest discover -s tests -v

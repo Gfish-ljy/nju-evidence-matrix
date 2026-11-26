@@ -37,7 +37,8 @@ PAPER_EDGE_COLUMNS = [
 ]
 
 
-def validate(mock_dir: Path, schema_path: Path) -> list[str]:
+def validate(mock_dir: Path, schema_path: Path, *, analysis=None) -> list[str]:
+    """Validate fixture files, or a TEI bundle plus optional in-memory analysis tables."""
     schema = json.loads(schema_path.read_text(encoding="utf-8"))
     Draft202012Validator.check_schema(schema)
     errors = []
@@ -45,7 +46,10 @@ def validate(mock_dir: Path, schema_path: Path) -> list[str]:
     keys = {name: set() for name in TABLES}
 
     for name, (filename, primary_key) in TABLES.items():
-        data = json.loads((mock_dir / filename).read_text(encoding="utf-8"))
+        if analysis is not None and name != "Paper":
+            data = analysis.get(filename, [])
+        else:
+            data = json.loads((mock_dir / filename).read_text(encoding="utf-8"))
         if not isinstance(data, list):
             errors.append(f"{filename}: expected a JSON array")
             continue
