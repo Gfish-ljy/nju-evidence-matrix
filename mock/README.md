@@ -1,7 +1,7 @@
 # Mock 数据 v0（Agent Memory）
 
 > 用途：UI 开发、接口联调前的假数据；所有论文、作者、结论均为**虚构**，不代表真实研究。
-> 契约：字段与枚举以 `../docs/schema_v0.json` 为准；接口形状以 `../api_contract_v0.md` 为准。
+> 契约：字段与枚举以 `../docs/schema_v0.json` 为准；接口形状以 `../docs/api_contract_v0.md` 为准。
 
 ## 内容
 
@@ -26,26 +26,14 @@
 
 ## 校验
 
+在仓库根目录执行：
+
 ```bash
-python - <<'EOF'
-import json, glob
-from jsonschema import Draft202012Validator, FormatChecker
-schema = json.load(open("../docs/schema_v0.json", encoding="utf-8"))
-files = {
-  "paper_nodes.json": "Paper", "claims.json": "Claim", "conditions.json": "Condition",
-  "claim_edges.json": "Relation", "evidence.json": "Evidence", "clusters.json": "Cluster",
-  "knowledge_states.json": "KnowledgeState", "updates.json": "UpdateLog",
-}
-for f, t in files.items():
-    sub = {"$schema": schema["$schema"], "$defs": schema["$defs"], "$ref": "#/$defs/" + t}
-    v = Draft202012Validator(sub, format_checker=FormatChecker())
-    data = json.load(open(f, encoding="utf-8"))
-    for i, rec in enumerate(data):
-        errs = list(v.iter_errors(rec))
-        assert not errs, (f, i, errs[0].message)
-print("mock OK")
-EOF
+python -m pip install -r mock/requirements-validation.txt
+python mock/validate.py
 ```
+
+脚本检查 JSON Schema、主键唯一性、跨文件 ID 引用、引用边 CSV 列顺序，以及 Claim 状态与最新状态版本是否一致。证据原文可以来自另一篇论文。检查失败会输出记录位置并返回非零退出码。涉及 mock 或 Schema 的 PR 会运行同一命令。
 
 ## 使用方式
 
