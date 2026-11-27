@@ -4,7 +4,7 @@
 
 ## 当前状态
 
-MVP v0：数据与接口契约、mock 数据已就绪。解析、抽取、后端、UI 可以并行开发。
+MVP v0：前端原型使用演示数据。后端已跑通真实 TEI 缓存导入、引用矩阵和原文查询。交接和演示见 [进度与联调说明](docs/integration_status.md)。
 
 ## 目录
 
@@ -14,14 +14,29 @@ docs/
   schema_v0.json               字段权威定义（机器可读）
   api_contract_v0.md           接口权威定义（路由、参数、响应、错误）
 mock/                          5 篇论文的完整假数据（虚构，仅用于开发）
+backend/                       TEI 导入、数据 API 和终端演示
+web/                           EvidenceMatrix 前端原型（React + TypeScript + Vite）
 ```
 
 ## 快速开始
 
+前端：
+
+```bash
+cd web
+npm install
+npm run dev
+```
+
+打开 Vite 输出的地址（默认 http://127.0.0.1:5173）。前端说明见 `web/README.md`。
+
+契约：
+
 1. 先读 `docs/统一接口与文档说明_v0.1.md`。
 2. 字段以 `docs/schema_v0.json` 为准，接口以 `docs/api_contract_v0.md` 为准。
-3. UI 可直接使用 `mock/` 开发，不需要等后端。
-4. 校验 mock：进入 `mock/` 目录，按 `mock/README.md` 中的脚本运行（需要 `jsonschema`）。
+3. UI 演示数据在 `web/src/data/demo.ts`（20 篇虚构论文）；`mock/` 是契约样例数据。
+4. 校验 mock：在仓库根目录按 [mock/README.md](mock/README.md) 运行。
+5. 接入真实 TEI 或抽取产物见 [TEI 离线接入](backend/tei_handoff.md)。
 
 ## 团队分工
 

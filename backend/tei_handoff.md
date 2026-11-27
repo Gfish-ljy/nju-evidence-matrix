@@ -2,6 +2,8 @@
 
 科研矩阵表已有三类产物：TEI 是原始解析缓存，单篇 JSON 是旧工具的 Excel 导出数据源，Excel 是展示结果。EvidenceMatrix 从 TEI 恢复逐处引用及其原文段落，旧工具继续负责原有 Excel、人工标签和译文。导入不会调用 GROBID 或模型服务，也不会修改旧工具目录。
 
+输入、验收状态和组会上可用的演示步骤见 [进度与联调说明](../docs/integration_status.md)。
+
 ## 运行
 
 在 EvidenceMatrix 仓库根目录执行，需 Python 3.11+。先将论文清单保存在 `.local/catalog.json`。下面是虚构示例，TEI 文件名要与实际缓存一致。
